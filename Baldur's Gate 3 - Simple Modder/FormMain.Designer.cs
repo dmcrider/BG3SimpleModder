@@ -3,12 +3,12 @@
     partial class FormMain
     {
         /// <summary>
-        ///  Required designer variable.
+        /// Required designer variable.
         /// </summary>
         private System.ComponentModel.IContainer components = null;
 
         /// <summary>
-        ///  Clean up any resources being used.
+        /// Clean up any resources being used.
         /// </summary>
         /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
         protected override void Dispose(bool disposing)
@@ -23,95 +23,88 @@
         #region Windows Form Designer generated code
 
         /// <summary>
-        ///  Required method for Designer support - do not modify
-        ///  the contents of this method with the code editor.
+        /// Required method for Designer support - do not modify
+        /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent()
         {
-            this.txtLarianToolsPath = new System.Windows.Forms.TextBox();
-            this.lblLarianToolsPath = new System.Windows.Forms.Label();
-            this.folderBrowserDialog = new System.Windows.Forms.FolderBrowserDialog();
-            this.btnBrowseLarianTools = new System.Windows.Forms.Button();
-            this.btnDataPath = new System.Windows.Forms.Button();
-            this.txtDataPath = new System.Windows.Forms.TextBox();
-            this.lblDataPath = new System.Windows.Forms.Label();
+            this.menuStrip = new System.Windows.Forms.MenuStrip();
+            this.toolStripMenuItemFile = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItemSettings = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItemHelp = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItemFileExit = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItemSettingsPaths = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItemHelpAbout = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
-            // txtLarianToolsPath
+            // menuStrip
             // 
-            this.txtLarianToolsPath.Location = new System.Drawing.Point(205, 34);
-            this.txtLarianToolsPath.Name = "txtLarianToolsPath";
-            this.txtLarianToolsPath.Size = new System.Drawing.Size(492, 29);
-            this.txtLarianToolsPath.TabIndex = 0;
+            this.menuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripMenuItemFile,
+            this.toolStripMenuItemSettings,
+            this.toolStripMenuItemHelp});
+            this.menuStrip.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip.Name = "menuStrip";
+            this.menuStrip.Size = new System.Drawing.Size(1029, 24);
+            this.menuStrip.TabIndex = 0;
+            this.menuStrip.Text = "menuStrip1";
             // 
-            // lblLarianToolsPath
+            // toolStripMenuItemFile
             // 
-            this.lblLarianToolsPath.AutoSize = true;
-            this.lblLarianToolsPath.Location = new System.Drawing.Point(25, 37);
-            this.lblLarianToolsPath.Name = "lblLarianToolsPath";
-            this.lblLarianToolsPath.Size = new System.Drawing.Size(174, 21);
-            this.lblLarianToolsPath.TabIndex = 1;
-            this.lblLarianToolsPath.Text = "Larian Tools Install Path:";
+            this.toolStripMenuItemFile.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripMenuItemFileExit});
+            this.toolStripMenuItemFile.Name = "toolStripMenuItemFile";
+            this.toolStripMenuItemFile.Size = new System.Drawing.Size(37, 20);
+            this.toolStripMenuItemFile.Text = "&File";
             // 
-            // folderBrowserDialog
+            // toolStripMenuItemSettings
             // 
-            this.folderBrowserDialog.RootFolder = System.Environment.SpecialFolder.MyDocuments;
-            this.folderBrowserDialog.ShowNewFolderButton = false;
+            this.toolStripMenuItemSettings.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripMenuItemSettingsPaths});
+            this.toolStripMenuItemSettings.Name = "toolStripMenuItemSettings";
+            this.toolStripMenuItemSettings.Size = new System.Drawing.Size(61, 20);
+            this.toolStripMenuItemSettings.Text = "&Settings";
             // 
-            // btnBrowseLarianTools
+            // toolStripMenuItemHelp
             // 
-            this.btnBrowseLarianTools.Location = new System.Drawing.Point(700, 31);
-            this.btnBrowseLarianTools.Margin = new System.Windows.Forms.Padding(0);
-            this.btnBrowseLarianTools.Name = "btnBrowseLarianTools";
-            this.btnBrowseLarianTools.Size = new System.Drawing.Size(91, 33);
-            this.btnBrowseLarianTools.TabIndex = 2;
-            this.btnBrowseLarianTools.Text = "Browse";
-            this.btnBrowseLarianTools.UseVisualStyleBackColor = true;
-            this.btnBrowseLarianTools.Click += new System.EventHandler(this.BtnBrowserLarianTools_Click);
+            this.toolStripMenuItemHelp.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripMenuItemHelpAbout});
+            this.toolStripMenuItemHelp.Name = "toolStripMenuItemHelp";
+            this.toolStripMenuItemHelp.Size = new System.Drawing.Size(44, 20);
+            this.toolStripMenuItemHelp.Text = "&Help";
             // 
-            // btnDataPath
+            // toolStripMenuItemFileExit
             // 
-            this.btnDataPath.Location = new System.Drawing.Point(700, 81);
-            this.btnDataPath.Margin = new System.Windows.Forms.Padding(0);
-            this.btnDataPath.Name = "btnDataPath";
-            this.btnDataPath.Size = new System.Drawing.Size(91, 33);
-            this.btnDataPath.TabIndex = 2;
-            this.btnDataPath.Text = "Browse";
-            this.btnDataPath.UseVisualStyleBackColor = true;
-            this.btnDataPath.Click += new System.EventHandler(this.BtnDataPath_Click);
+            this.toolStripMenuItemFileExit.Name = "toolStripMenuItemFileExit";
+            this.toolStripMenuItemFileExit.Size = new System.Drawing.Size(93, 22);
+            this.toolStripMenuItemFileExit.Text = "&Exit";
             // 
-            // txtDataPath
+            // toolStripMenuItemSettingsPaths
             // 
-            this.txtDataPath.Location = new System.Drawing.Point(205, 84);
-            this.txtDataPath.Name = "txtDataPath";
-            this.txtDataPath.Size = new System.Drawing.Size(492, 29);
-            this.txtDataPath.TabIndex = 0;
+            this.toolStripMenuItemSettingsPaths.Name = "toolStripMenuItemSettingsPaths";
+            this.toolStripMenuItemSettingsPaths.Size = new System.Drawing.Size(122, 22);
+            this.toolStripMenuItemSettingsPaths.Text = "Set &Paths";
             // 
-            // lblDataPath
+            // toolStripMenuItemHelpAbout
             // 
-            this.lblDataPath.AutoSize = true;
-            this.lblDataPath.Location = new System.Drawing.Point(11, 87);
-            this.lblDataPath.Name = "lblDataPath";
-            this.lblDataPath.Size = new System.Drawing.Size(188, 21);
-            this.lblDataPath.TabIndex = 1;
-            this.lblDataPath.Text = "Baldur\'s Gate 3 Data Path:";
+            this.toolStripMenuItemHelpAbout.Name = "toolStripMenuItemHelpAbout";
+            this.toolStripMenuItemHelpAbout.Size = new System.Drawing.Size(107, 22);
+            this.toolStripMenuItemHelpAbout.Text = "&About";
             // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1218, 728);
-            this.Controls.Add(this.lblDataPath);
-            this.Controls.Add(this.txtDataPath);
-            this.Controls.Add(this.btnDataPath);
-            this.Controls.Add(this.btnBrowseLarianTools);
-            this.Controls.Add(this.lblLarianToolsPath);
-            this.Controls.Add(this.txtLarianToolsPath);
+            this.ClientSize = new System.Drawing.Size(1029, 630);
+            this.Controls.Add(this.menuStrip);
             this.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.Margin = new System.Windows.Forms.Padding(4);
+            this.MainMenuStrip = this.menuStrip;
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "FormMain";
-            this.Text = "Baldur\'s Gate 3 - Simple Modder";
-            this.Load += new System.EventHandler(this.FormMain_Load);
+            this.Text = "Baldur\'s Gate 3 Simple Modder";
+            this.menuStrip.ResumeLayout(false);
+            this.menuStrip.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -119,13 +112,12 @@
 
         #endregion
 
-        private System.Windows.Forms.TextBox txtLarianToolsPath;
-        private System.Windows.Forms.Label lblLarianToolsPath;
-        private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog;
-        private System.Windows.Forms.Button btnBrowseLarianTools;
-        private System.Windows.Forms.Button btnDataPath;
-        private System.Windows.Forms.TextBox txtDataPath;
-        private System.Windows.Forms.Label lblDataPath;
+        private System.Windows.Forms.MenuStrip menuStrip;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemFile;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemFileExit;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemSettings;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemSettingsPaths;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemHelp;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemHelpAbout;
     }
 }
-
