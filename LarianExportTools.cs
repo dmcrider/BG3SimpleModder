@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 
-namespace BG3SimpleModder
+namespace BS3SimpleModder
 {
     public class LarianExportTool
     {
@@ -16,8 +18,8 @@ namespace BG3SimpleModder
             var path = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
 
             string[] allDirs = Directory.GetDirectories(path);
-            
-            foreach(string dir in allDirs)
+
+            foreach (string dir in allDirs)
             {
                 if (dir.Contains(_toolName))
                 {

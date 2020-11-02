@@ -3,16 +3,21 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace BG3SimpleModder
+namespace BS3SimpleModder
 {
     public partial class FormSettings : Form
     {
-        public FormSettings()
+        private FormMain formMain;
+
+        public FormSettings(FormMain parentForm)
         {
             InitializeComponent();
+            formMain = parentForm;
         }
 
         private void FormSettings_Load(object sender, EventArgs e)
@@ -38,9 +43,7 @@ namespace BG3SimpleModder
 
         private void BtnBrowse_Click(object sender, EventArgs e)
         {
-            Button btn = sender as Button;
-
-            switch (btn.Tag.ToString())
+            switch (((Button)sender).Tag.ToString())
             {
                 case "tools":
                     txtTools.Text = BrowseForFolder(Environment.SpecialFolder.MyDocuments);
@@ -51,6 +54,12 @@ namespace BG3SimpleModder
                 default:
                     return;
             }
+        }
+
+        private void BtnSave_Click(object sender, EventArgs e)
+        {
+            // Enable the main panel if it was disabled
+            formMain.UpdateMainPanelEnabled(true);
         }
     }
 }
