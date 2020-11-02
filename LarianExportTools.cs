@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.WindowsAPICodePack.Shell.Interop;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -9,35 +10,38 @@ namespace BS3SimpleModder
 {
     public class LarianExportTool
     {
-        public static string InstallPath = "";
-        public static string DataPath = "";
-        private static readonly string _toolName = "ExportTool";
+        private static readonly string GustavPAK = @"\Gustav.PAK";
+        private static readonly string SharedPAK = @"\Shared.PAK";
 
-        public static void GetInstallPath()
+        public static void CreateBackupOfData()
         {
-            var path = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+            if(AppSettings.InstallPath == "" || AppSettings.DataPath == "") { return; }
+            if(!Directory.Exists(AppSettings.InstallPath) || !Directory.Exists(AppSettings.DataPath)) { return; }
 
-            string[] allDirs = Directory.GetDirectories(path);
+            string dest = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + @"\BaldursGateData_" + DateTime.Now.ToString("yyyy-MM-dd--HH-mm-ss");
+            Directory.CreateDirectory(dest);
 
-            foreach (string dir in allDirs)
-            {
-                if (dir.Contains(_toolName))
-                {
-                    InstallPath = dir;
-                    return;
-                }
-            }
+            CopyFiles(dest);
+
+            File.WriteAllText(AppSettings.SettingsFolder + AppSettings.BackupFile, dest);
         }
 
-        public static void GetDataPath()
+        public static void Unpack()
         {
-            var path = Environment.SpecialFolder.ProgramFiles + @"\Steam\steamapps\common\Baldurs Gate 3\Data";
-
-            if (Directory.Exists(path))
+            // Create a mod_TIMESTAMP directory inside the \Data\ folder
+            if(!Directory.Exists(AppSettings.DataPath + @"\mod"))
             {
-                DataPath = path;
-                return;
+                Directory.CreateDirectory(AppSettings.DataPath + @"\mod");
             }
+
+            // Start a cmd process in AppSettings.InstallPath
+            string command = $"divine -g bg3 -s {AppSettings.DataPath + GustavPAK} -d {AppSettings.DataPath + @"\mod"} --use-package-name";
+        }
+
+        private static void CopyFiles(string dest)
+        {
+            File.Copy(AppSettings.DataPath + GustavPAK, dest + GustavPAK);
+            File.Copy(AppSettings.DataPath + SharedPAK, dest + SharedPAK);
         }
     }
 }

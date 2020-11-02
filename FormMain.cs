@@ -15,18 +15,20 @@ namespace BS3SimpleModder
         public FormMain()
         {
             InitializeComponent();
-            LarianExportTool.GetInstallPath();
-            LarianExportTool.GetDataPath();
+            CenterToScreen();
+            AppSettings.LoadSettings();
         }
 
         private void FormMain_Load(object sender, EventArgs e)
         {
             pathsToolStripMenuItem.Click += ToolStripMenuItemSettingsPaths_Click;
-            MessageBox.Show($"InstallPath: {LarianExportTool.InstallPath}\nData Path: {LarianExportTool.DataPath}");
+        }
 
-            if (LarianExportTool.DataPath == "" || LarianExportTool.InstallPath == "")
+        private void FormMain_Shown(object sender, EventArgs e)
+        {
+            if (AppSettings.DataPath == "" || AppSettings.InstallPath == "")
             {
-                MessageBox.Show("One or more path was not found. Please update the paths using the Settings menu.");
+                MessageBox.Show("Please update the paths using the Settings menu.");
                 UpdateMainPanelEnabled(false);
             }
         }

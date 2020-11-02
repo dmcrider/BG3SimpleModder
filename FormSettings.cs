@@ -2,43 +2,52 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Microsoft.WindowsAPICodePack.Dialogs;
 
 namespace BS3SimpleModder
 {
     public partial class FormSettings : Form
     {
-        private FormMain formMain;
+        private readonly FormMain formMain;
 
         public FormSettings(FormMain parentForm)
         {
             InitializeComponent();
+            CenterToParent();
             formMain = parentForm;
         }
 
         private void FormSettings_Load(object sender, EventArgs e)
         {
-            txtTools.Text = LarianExportTool.InstallPath;
-            txtData.Text = LarianExportTool.DataPath;
+            txtTools.Text = AppSettings.InstallPath;
+            txtData.Text = AppSettings.DataPath;
+            txtBackup.Text = GetBackupLocation();
         }
 
-        private string BrowseForFolder(Environment.SpecialFolder root)
+        private string BrowseForFolder(string rootPath, string currentSelection)
         {
-            folderBrowserDialog.RootFolder = root;
-            DialogResult result = folderBrowserDialog.ShowDialog();
-
-            if (result == DialogResult.OK)
+            var dialog = new CommonOpenFileDialog()
             {
-                return folderBrowserDialog.SelectedPath;
+                InitialDirectory = rootPath,
+                IsFolderPicker = true
+            };
+
+            if (dialog.ShowDialog() == CommonFileDialogResult.Ok)
+            {
+                var result = dialog.FileName;
+                dialog.Dispose();
+                return result;
             }
 
-            folderBrowserDialog.SelectedPath = "";
-            folderBrowserDialog.RootFolder = Environment.SpecialFolder.Windows;
-            return "";
+            dialog.Dispose();
+            return currentSelection;
         }
 
         private void BtnBrowse_Click(object sender, EventArgs e)
@@ -46,10 +55,10 @@ namespace BS3SimpleModder
             switch (((Button)sender).Tag.ToString())
             {
                 case "tools":
-                    txtTools.Text = BrowseForFolder(Environment.SpecialFolder.MyDocuments);
+                    txtTools.Text = BrowseForFolder(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), txtTools.Text);
                     break;
                 case "data":
-                    txtData.Text = BrowseForFolder(Environment.SpecialFolder.ProgramFilesX86);
+                    txtData.Text = BrowseForFolder(Environment.GetFolderPath(Environment.SpecialFolder.ProgramFilesX86), txtData.Text);
                     break;
                 default:
                     return;
@@ -60,6 +69,35 @@ namespace BS3SimpleModder
         {
             // Enable the main panel if it was disabled
             formMain.UpdateMainPanelEnabled(true);
+            AppSettings.InstallPath = txtTools.Text;
+            AppSettings.DataPath = txtData.Text;
+            AppSettings.SaveSettings();
+        }
+
+        private string GetBackupLocation()
+        {
+            if(File.Exists(AppSettings.SettingsFolder + AppSettings.BackupFile))
+            {
+                return File.ReadAllText(AppSettings.SettingsFolder + AppSettings.BackupFile);
+            }
+            return "Backup in progress...";
+        }
+
+        private void BtnBackup_Click(object sender, EventArgs e)
+        {
+            Process.Start(txtBackup.Text);
+        }
+
+        private void TxtBackup_TextChanged(object sender, EventArgs e)
+        {
+            if(txtBackup.Text == "Backup in progress...")
+            {
+                btnBackup.Visible = false;
+            }
+            else
+            {
+                btnBackup.Visible = true;
+            }
         }
     }
 }
